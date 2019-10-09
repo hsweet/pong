@@ -1,14 +1,14 @@
-'''
-Simple Pong game, code built on arcade template from
+''' Simple Pong game, code built on arcade template from
 https://opensource.com/article/18/4/easy-2d-game-creation-python-and-arcade
 '''
 import arcade
 from arcade.geometry import check_for_collision
 import random
+from time import sleep
 
 SCREEN_WIDTH = 600
 SCREEN_HEIGHT = 400
-TITLE='One Paddle Pong'
+TITLE = 'One Paddle Pong'
 
 class Pong(arcade.Window):
     """ Main application class. """
@@ -17,7 +17,7 @@ class Pong(arcade.Window):
         super().__init__(width, height,title)
         arcade.set_background_color(arcade.color.AMAZON)
         self.score = 0
-        # self.set_mouse_visible(False)
+        self.set_mouse_visible(False)
         self.ball_sound = arcade.load_sound("sounds/coin1.wav")
         self.paddle_sound = arcade.load_sound("sounds/jump1.wav")
 
@@ -25,8 +25,9 @@ class Pong(arcade.Window):
         # Set up your game here
         self.player_paddle = arcade.Sprite('paddle.png',1)
         self.ball = arcade.Sprite('ball.png')
-        self.direction_x = 1
-        self.direction_y =1
+        # direction also affects speed
+        self.direction_x = random.random()
+        self.direction_y = random.random()
         self.speed = 6
         self.player_paddle.center_x = SCREEN_WIDTH -10
         self.player_paddle.center_y = 50
@@ -43,6 +44,7 @@ class Pong(arcade.Window):
     def update(self, delta_time):
         """ All the logic to move, and the game logic goes here.
         also called animate method """
+        print (delta_time)
         self.ball.center_x += self.direction_x * self.speed  # move to the right
         self.ball.center_y += self.direction_y * self.speed  # move up and down
         # next make ball start from random spot move in random direction
@@ -65,6 +67,10 @@ class Pong(arcade.Window):
         elif self.ball.center_y > SCREEN_HEIGHT or self.ball.center_y < 10:
             self.direction_y *= -1
             arcade.play_sound(self.ball_sound)
+        elif self.score > 20:
+            print ('Winner')
+            sleep(2)
+            exit()
 
     def on_key_press(self, key, key_modifiers):
         if key == arcade.key.UP:
@@ -78,13 +84,13 @@ class Pong(arcade.Window):
     def on_key_release(self, key, key_modifiers):
         pass
 
-''' using a main() function is not necessary, but makes things easier
-if you use this as a module in another program. (import onepaddle)
-The program will run if it is not an import but all the methods will
-work if it is imported.
-'''
-
 def main():
+
+    '''a main() function is not necessary unless you use this as a module
+     you import into another program. The code in main() will only runs if
+      it is not imported.  Then you just want to be able to use the methods.
+    '''
+
     game = Pong(SCREEN_WIDTH, SCREEN_HEIGHT, TITLE)
     game.setup()
     arcade.run()
