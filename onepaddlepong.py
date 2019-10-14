@@ -18,13 +18,14 @@ class Pong(arcade.Window):
         arcade.set_background_color(arcade.color.AMAZON)
         self.score = 0
         self.set_mouse_visible(False)
-        self.ball_sound = arcade.load_sound("sounds/coin1.wav")
-        self.paddle_sound = arcade.load_sound("sounds/jump1.wav")
+        self.ball_sound = arcade.load_sound("resources/coin1.wav")
+        self.paddle_sound = arcade.load_sound("resources/jump1.wav")
+        self.lose_sound = arcade.load_sound("resources/laser1.wav")
 
     def setup(self):
         # Set up your game here
-        self.player_paddle = arcade.Sprite('paddle.png',1)
-        self.ball = arcade.Sprite('ball.png')
+        self.player_paddle = arcade.Sprite('resources/paddle.png',1)
+        self.ball = arcade.Sprite('resources/ball.png')
         # direction also affects speed
         self.direction_x = random.random()
         self.direction_y = random.random()
@@ -43,7 +44,7 @@ class Pong(arcade.Window):
 
     def update(self, delta_time):
         """ All the logic to move, and the game logic goes here.
-        also called animate method """
+         """
         print (delta_time)
         self.ball.center_x += self.direction_x * self.speed  # move to the right
         self.ball.center_y += self.direction_y * self.speed  # move up and down
@@ -77,7 +78,7 @@ class Pong(arcade.Window):
             self.player_paddle.center_y += 30
         elif key == arcade.key.DOWN:
             self.player_paddle.center_y += -30
-        elif key == arcade.Q:
+        elif key == arcade.key.Q:
             exit()
 
 

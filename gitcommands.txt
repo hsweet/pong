@@ -1,0 +1,35 @@
+################  Install Arcade #################
+python3 -m pip install -U pygame --user
+pip3 install arcade
+pip install dataclasses
+
+################### GIT ###############################
+git init
+git add .
+git commit -m "pong"
+git status
+git add draw.py
+git commit -m "Arcade drawing with loops"
+
+git remote -v
+git remote add origin https://github.com/hsweet/pong.git
+git remote set-url origin git@github.com:hsweet/pong.git
+git remote -v   #show origin
+git push -u origin master
+git push
+
+########## Branches ######################
+git branch "branchname"
+git checkout "branchname"
+or .. git checkout -b "branchname"
+
+##############  SSH #############################
+ssh-keygen -t rsa -b  -C "hsweet@gmail.com"
+eval "$(ssh-agent -s)"
+ssh-add id_rsa
+ssh -T git@github.com
+
+################ Make graphics ###############
+
+convert -size 10x90 canvas:black paddle.png
+convert -size 30x30 canvas:black ball.png
