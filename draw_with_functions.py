@@ -12,9 +12,9 @@ def stickman(x,y):
     arcade.draw_rectangle_filled(x,y,10,100, arcade.color.DARK_CANDY_APPLE_RED)
     arcade.draw_point(x, y + 20, arcade.color.DARK_GOLDENROD,50)
 
-def letter():
-    # add your code here
-    pass
+def draw_t(x,y):
+	arcade.draw_rectangle_filled(x,y,20,100, arcade.color.PURPLE)
+
 
 def draw_random():
     # add your code here
@@ -63,7 +63,8 @@ def pyramid(object, y, how_many):
         pyramid(object, y, how_many)
 
 # move call to draw_x function to menu
-draw_x (stickman)
+# draw_x (stickman)
+draw_t(100 ,200)
 
 '''
 #    Menu
@@ -78,6 +79,5 @@ elif pattern == 'g':
 elif pattern == 'p':
     draw_pyramid(stickman, 25, 10)
 '''
-
 arcade.finish_render()
 arcade.run()

@@ -8,7 +8,7 @@ import arcade, random
 # Size of the screen
 SCREEN_WIDTH = 300
 SCREEN_HEIGHT = 300
-SCREEN_TITLE = "Pong"
+SCREEN_TITLE = "Trevors Pong"
 
 # Size of the rectangle
 PADDLE_WIDTH = 10
