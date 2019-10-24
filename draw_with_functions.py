@@ -1,5 +1,6 @@
 #! /usr/bin/python3.6
 import arcade
+import random
 
 SCREEN_WIDTH = 450
 SCREEN_HEIGHT = 500
@@ -12,17 +13,20 @@ def stickman(x,y):
     arcade.draw_rectangle_filled(x,y,10,100, arcade.color.DARK_CANDY_APPLE_RED)
     arcade.draw_point(x, y + 20, arcade.color.DARK_GOLDENROD,50)
 
-def letter():
-    # add your code here
-    pass
+def draw_t(x,y):
+    arcade.draw_rectangle_filled(x,y-50,20,100, arcade.color.PURPLE)
+    arcade.draw_rectangle_filled(x,y,100,20, arcade.color.PURPLE)
 
-def draw_random():
-    # add your code here
-    pass
+
+def draw_random(object):
+    x = random.randint(1,450)
+    y = random.randint(1,450)
+    draw_t(x,y)
+
 
 # functions below draw different shapes.
 # you call them using the function name, and the object to draw is
-# inside the ()    
+# inside the ()
 
 def draw_horizontal(object):
     for x in range (1, 9):
@@ -63,7 +67,8 @@ def pyramid(object, y, how_many):
         pyramid(object, y, how_many)
 
 # move call to draw_x function to menu
-draw_x (stickman)
+# draw_x (stickman)
+draw_random(draw_t)
 
 '''
 #    Menu
@@ -78,6 +83,5 @@ elif pattern == 'g':
 elif pattern == 'p':
     draw_pyramid(stickman, 25, 10)
 '''
-
 arcade.finish_render()
 arcade.run()
