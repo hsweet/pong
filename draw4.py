@@ -32,7 +32,7 @@ class Letter(arcade.Window):
 def main():
   # make an instance of Letter class
    let = Letter(SCREEN_WIDTH, SCREEN_HEIGHT, 'My Letter')
-   # start_render() BEFORE and drawing
+   # start_render() BEFORE drawing
    arcade.start_render()
    let.drawA(300,100)
    let.vertical(30, 10, 100, 500)
