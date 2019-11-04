@@ -16,13 +16,13 @@ def stickman(x,y):
 def letter():
     pass
 
-def draw_random(object):
-    object (random.randint(10,400), random.randint (10,450))
-
 
 # functions below draw different shapes.
 # you call them using the function name, and the object to draw is
 # inside the ()
+
+def draw_random(object):
+    object (random.randint(10,400), random.randint (10,450))
 
 def draw_horizontal(object):
     for x in range (1, 9):
