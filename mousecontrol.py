@@ -50,14 +50,14 @@ class MyGame(arcade.Window):
         print (dx, dy)
         if dy > 0:
             for m in range (5):
-                self.ball.position_y += dy / 10
+                self.ball.position_y += dy / 2
                 if self.ball.position_y > SCREEN_HEIGHT:
-                    self.ball.position_y = SCREEN_HEIGHT
+                    self.ball.position_y = 20
         elif dy < 0:
             for m in range (5):
-                self.ball.position_y -= dy / -10
+                self.ball.position_y -= dy / -2
                 if self.ball.position_y < 0:
-                    self.ball.position_y = 0
+                    self.ball.position_y = SCREEN_HEIGHT
 
   def on_mouse_press(self, x, y, button, modifiers):
     """ Called when the user presses a mouse button. """
@@ -72,6 +72,5 @@ class MyGame(arcade.Window):
 def main():
   window = MyGame(640, 480, "Indirect Mouse Control")
   arcade.run()
-
 
 main()

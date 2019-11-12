@@ -1,3 +1,4 @@
+#!/usr/bin/python3
 """
 Minimal arcade program
 Just enough to open a window with a color and draw a few simple shapes.
@@ -31,7 +32,7 @@ def on_draw(delta_time):
     #Back and forth in X direction
     if on_draw.center_x > SCREEN_WIDTH-WIDTH/2 or on_draw.center_x < WIDTH/2:
         on_draw.delta_x *= -1
-    # add code here for Y direction    
+    # add code here for Y direction
 
 on_draw.center_x = 100      # Initial x position
 on_draw.center_y = 50       # Initial y position
