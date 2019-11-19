@@ -1,3 +1,4 @@
+#!/usr/bin/python3
 ''' Simple Pong game, code built on arcade template from
 https://opensource.com/article/18/4/easy-2d-game-creation-python-and-arcade
 '''
@@ -31,7 +32,7 @@ class Pong(arcade.Window):
         # direction also affects speed
         self.direction_x = 1
         self.direction_y = 1
-        self.speed = 5
+        self.speed = 180
         self.player_paddle.center_x = SCREEN_WIDTH -10
         self.player_paddle.center_y = 50
         self.ball.center_x = 10
@@ -48,8 +49,8 @@ class Pong(arcade.Window):
         """ All the logic to move, and the game logic goes here.
          """
         # print (delta_time)
-        self.ball.center_x += self.direction_x * self.speed  # move to the right
-        self.ball.center_y += self.direction_y * self.speed  # move up and down
+        self.ball.center_x += self.direction_x * self.speed  * delta_time # move to the right
+        self.ball.center_y += self.direction_y * self.speed  * delta_time # move up and down
         # next make ball start from random spot move in random direction
         # bounce off walls and paddle.
         if check_for_collision (self.ball, self.player_paddle) == True:
