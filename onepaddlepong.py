@@ -37,20 +37,25 @@ class GameOverView(arcade.View):
 
     def on_draw(self):
         arcade.start_render()
-        if self.score > 10:
-            arcade.draw_text(str(self.score), WIDTH/2, HEIGHT/4,
+        if self.score > 1:
+            arcade.draw_text("You Won!", WIDTH/2, HEIGHT/5,
+                             arcade.color.BLACK, font_size=30, anchor_x="center")
+
+        arcade.draw_text(str(self.score)+" Points", WIDTH/2, HEIGHT/3,
                          arcade.color.BLACK, font_size=30, anchor_x="center")
 
-        arcade.draw_text("Game Over", WIDTH/2, HEIGHT/2,
-                         arcade.color.BLACK, font_size=30, anchor_x="center")
+        arcade.draw_text("Game Over", WIDTH/2, HEIGHT/1.5,
+                         arcade.color.BLACK, font_size=40, anchor_x="center")
 
     def on_mouse_press(self, _x, _y, _button, _modifiers):
         exit()
 
+    def on_key_press(self, key, key_modifiers):
+        exit()
 
 class Pong(arcade.View):
 
-    """ Main application class. """
+    """ The Game """
 
     def __init__(self):
         super().__init__()
@@ -60,19 +65,17 @@ class Pong(arcade.View):
         self.lose_sound = arcade.load_sound("resources/laser1.wav")
         self.background_sound = arcade.load_sound("resources/serba.wav")
         self.highscore = 0
+
         try:
             f = open('highscore.txt','w')
         except:
             print('High Score File not found')
-        #except Exception as e:
-        #    raise
 
     def on_show(self):
         arcade.set_background_color(arcade.color.AMAZON)
-        #self.set_mouse_visible(False)
+
         self.player_paddle = arcade.Sprite('resources/paddle.png',1)
         self.ball = arcade.Sprite('resources/ball.png')
-
         self.start_ball()
 
     def start_ball(self):
